@@ -1,0 +1,36 @@
+{
+    "users": [
+        {
+			"id": "1",
+            "name": "Shafin Ahmed",
+            "username": "shafin56789",
+            "password": "shafinmedha",
+			"profile-locked": 0,
+			"friends": ["32", "234", "232"],
+			"posts": ["123", "456", "789"],
+			"notifications": ["389", "s234", "j832"]
+        }
+    ],
+	"posts": [
+		{
+			"id": "123",
+            "content": "This is the first post.",
+            "author": "1",
+            "likes": ["234", "567", "890"],
+            "comments": ["987", "654", "321"]
+        }
+	],
+	"comments": [
+		{
+			"id": "987",
+            "content": "Nice post!",
+            "author": "234"
+		}
+	],
+	"notifications": [
+		{
+			"id": "389",
+            "content": "Friend request from Shafin Ahmed."
+		}
+	]
+}
