@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
@@ -31,14 +31,28 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="cJSON.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="cJSON.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen-auth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen-login.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen-signup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen-mainmenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="types.h" />
+		<Unit filename="constants.h" />
+		<Unit filename="utils.h" />
+		<Unit filename="screens.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

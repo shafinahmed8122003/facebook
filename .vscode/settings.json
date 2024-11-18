@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "*.css": "tailwindcss",
+        "utils.h": "c",
+        "screens.h": "c"
+    }
+}
