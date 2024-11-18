@@ -17,5 +17,15 @@ int ScreenMainmenu(User *user)
     char title[50] = "Peach Be Upon You, ";
     strcat(title, user->name);
 
-    return show_options(title, options, option_count);
+    int current_option = 0;
+    int finished = 0;
+    while (!finished)
+    {
+        clear_screen();
+        hide_cursor();
+        show_title(title);
+        finished = show_options(options, option_count, &current_option);
+    }
+
+    return current_option;
 }

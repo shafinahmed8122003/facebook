@@ -61,6 +61,24 @@ screen_signup:
 screen_mainmenu:
 {
     int choice = ScreenMainmenu(&user);
+    switch (choice)
+    {
+    case 3:
+        goto screen_search;
+        break;
+    default:
+        goto end;
+    }
+}
+
+screen_search:
+{
+    int choice = ScreenSearch(&db, &user);
+    switch (choice)
+    {
+    default:
+        goto screen_mainmenu;
+    }
 }
 
 end:
