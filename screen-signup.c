@@ -9,8 +9,7 @@ int ScreenSignup(Database *db, User *user)
     clear_screen();
     show_cursor();
 
-    printf("Starting a new journey!\n");
-    printf("------------------------------\n");
+    show_title("Starting a new journey!");
     printf("Name: ");
     scanf(" %[^\n]", &name);
     printf("Username: ");

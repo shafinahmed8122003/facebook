@@ -8,8 +8,7 @@ int ScreenLogin(Database *db, User *user)
     clear_screen();
     show_cursor();
 
-    printf("Please enter your credentials!\n");
-    printf("------------------------------\n");
+    show_title("Please enter your credentials!");
     printf("Username: ");
     scanf(" %[^\n]", &username);
     printf("Password: ");

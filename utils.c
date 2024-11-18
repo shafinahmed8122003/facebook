@@ -207,8 +207,7 @@ int show_options(char title[], char options[][50], int option_count)
         clear_screen();
         hide_cursor();
 
-        puts(title);
-        printf("-----------------------\n");
+        show_title(title);
 
         for (int i = 0; i < option_count; i++)
         {
@@ -249,4 +248,19 @@ int show_options(char title[], char options[][50], int option_count)
             return current_option;
         }
     }
+}
+
+void draw_line(int length)
+{
+    for (int i = 0; i < length + 2; i++)
+    {
+        printf("-");
+    }
+    printf("\n");
+}
+
+void show_title(char title[])
+{
+    printf(" %s \n", title);
+    draw_line(strlen(title));
 }

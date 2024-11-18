@@ -19,5 +19,7 @@ int find_user_using_username_password(Database *db, User *user, char username[],
 int create_an_user(Database *db, User *user, char name[], char username[], char password[]);
 unsigned long long int generate_unique_id();
 int show_options(char title[], char options[][50], int option_count);
+void draw_line(int length);
+void show_title(char title[]);
 
 #endif
