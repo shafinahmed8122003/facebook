@@ -214,11 +214,11 @@ int show_options(char title[], char options[][50], int option_count)
         {
             if (current_option == i)
             {
-                printf("> %s\n", options[i]);
+                printf("\033[1;7m  %s  \033[0m\n", options[i]);
             }
             else
             {
-                printf("  %s\n", options[i]);
+                printf(" %s\n", options[i]);
             }
         }
 

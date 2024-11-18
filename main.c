@@ -64,5 +64,6 @@ screen_mainmenu:
 }
 
 end:
+    show_cursor();
     return 0;
 }
