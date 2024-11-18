@@ -64,6 +64,7 @@ screen_mainmenu:
 }
 
 end:
+    clear_screen();
     show_cursor();
     return 0;
 }
