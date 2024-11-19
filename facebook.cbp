@@ -49,6 +49,9 @@
 		<Unit filename="screen-mainmenu.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="screen-search.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="types.h" />
 		<Unit filename="constants.h" />
 		<Unit filename="utils.h" />
