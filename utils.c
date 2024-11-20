@@ -272,7 +272,7 @@ void show_title_in_box(char title[])
     printf("\n");
 }
 
-int find_user_by_username(Database *db, User *friend, char username[])
+int find_user_by_username(Database *db, User *user, char username[])
 {
     strlwr(username);
 
@@ -282,28 +282,77 @@ int find_user_by_username(Database *db, User *friend, char username[])
         if (strcmp(username, db->users[i].username) == 0)
         {
             success = 1;
-            friend->id = db->users[i].id;
-            strcpy(friend->name, db->users[i].name);
-            strcpy(friend->username, db->users[i].username);
-            strcpy(friend->password, db->users[i].password);
-            friend->profile_locked = db->users[i].profile_locked;
+            user->id = db->users[i].id;
+            strcpy(user->name, db->users[i].name);
+            strcpy(user->username, db->users[i].username);
+            strcpy(user->password, db->users[i].password);
+            user->profile_locked = db->users[i].profile_locked;
 
             for (int j = 0; j < TOTAL_POST_NUMBER; j++)
             {
-                friend->posts_id[j] = db->users[i].posts_id[j];
+                user->posts_id[j] = db->users[i].posts_id[j];
             }
 
             for (int j = 0; j < TOTAL_FRIEND_NUMBER; j++)
             {
-                friend->friends_id[j] = db->users[i].friends_id[j];
+                user->friends_id[j] = db->users[i].friends_id[j];
             }
 
             for (int j = 0; j < TOTAL_NOTIFICATION_NUMBER; j++)
             {
-                friend->notifications_id[j] = db->users[i].notifications_id[j];
+                user->notifications_id[j] = db->users[i].notifications_id[j];
             }
         }
     }
 
     return success;
+}
+
+time_t get_current_time()
+{
+    return time(NULL);
+}
+
+void create_post(Database *db, User *user, char post_content[])
+{
+    Post post;
+    post.id = generate_unique_id();
+    strcpy(post.content, post_content);
+    post.timestamp = get_current_time();
+    post.author_id = user->id;
+    post.likes = 0;
+    post.shares = 0;
+
+    for (int i = 0; i < TOTAL_POST_NUMBER; i++)
+    {
+        if (db->posts[i].id == 0) // Means empty slot
+        {
+            db->posts[i].id = post.id;
+            strcpy(db->posts[i].content, post.content);
+            db->posts[i].timestamp = post.timestamp;
+            db->posts[i].author_id = post.author_id;
+            db->posts[i].likes = post.likes;
+            db->posts[i].shares = post.shares;
+            break;
+        }
+    }
+
+    for (int i = 0; i < TOTAL_USER_NUMBER; i++)
+    {
+        if (db->users[i].id == user->id)
+        {
+            for (int j = 0; j < TOTAL_POST_NUMBER; j++)
+            {
+                if (db->users[i].posts_id[j] == 0)
+                {
+                    db->users[i].posts_id[j] = post.id;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+    save_data(db);
+    find_user_by_username(db, user, user->username);
 }

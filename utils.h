@@ -22,6 +22,8 @@ int show_options(char options[][50], int option_count, int *current_option);
 void draw_line(int length);
 void show_title(char title[]);
 void show_title_in_box(char title[]);
-int find_user_by_username(Database *db, User *friend, char username[]);
+int find_user_by_username(Database *db, User *user, char username[]);
+time_t get_current_time();
+void create_post(Database *db, User *user, char post_content[]);
 
 #endif

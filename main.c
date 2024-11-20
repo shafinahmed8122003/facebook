@@ -63,6 +63,12 @@ screen_mainmenu:
     int choice = ScreenMainmenu(&user);
     switch (choice)
     {
+    case 0:
+        goto screen_newsfeed;
+        break;
+    case 1:
+        goto screen_createpost;
+        break;
     case 3:
         goto screen_search;
         break;
@@ -78,6 +84,22 @@ screen_search:
     {
     default:
         goto screen_mainmenu;
+    }
+}
+
+screen_createpost:
+{
+    ScreenCreatePost(&db, &user);
+    goto screen_mainmenu;
+}
+
+screen_newsfeed:
+{
+    int choice = ScreenNewsFeed(&db, &user);
+    switch (choice)
+    {
+        default:
+            goto screen_mainmenu;
     }
 }
 

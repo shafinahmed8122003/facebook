@@ -14,7 +14,7 @@ int ScreenMainmenu(User *user)
     int option_count = sizeof(options) / sizeof(options[0]);
 
     
-    char title[50] = "Peach Be Upon You, ";
+    char title[50] = "Peace Be Upon You, ";
     strcat(title, user->name);
 
     int current_option = 0;
