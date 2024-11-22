@@ -3,40 +3,44 @@
 
 #include "constants.h"
 
+typedef unsigned long long int USER_ID;
+
+// db.users[0].name
+
 typedef struct
 {
-    unsigned long long int id;
+    USER_ID id;
     char name[50];
     char username[50];
     char password[50];
     int profile_locked; // 0 - False & 1 - True
-    unsigned long long int posts_id[100];
-    unsigned long long int friends_id[100];
-    unsigned long long int notifications_id[100];
+    USER_ID posts_id[100];
+    USER_ID friends_id[100];
+    USER_ID notifications_id[100];
 } User;
 
 typedef struct
 {
-    unsigned long long int id;
+    USER_ID id;
     char content[100];
     time_t timestamp;
-    unsigned long long int author_id;
+    USER_ID author_id;
     int likes;
-    unsigned long long int comments_id[100];
+    USER_ID comments_id[100];
     int shares;
 } Post;
 
 typedef struct
 {
-    unsigned long long int id;
+    USER_ID id;
     char content[100];
     time_t timestamp;
-    unsigned long long int author_id;
+    USER_ID author_id;
 } Comment;
 
 typedef struct
 {
-    unsigned long long int id;
+    USER_ID id;
     char content[100];
     time_t timestamp;
 } Notification;

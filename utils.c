@@ -123,6 +123,40 @@ int find_user_using_username_password(Database *db, User *user, char username[],
     return 0;
 }
 
+int find_user_using_id(Database *db, User *user, USER_ID id)
+{
+    for (int i = 0; i < TOTAL_USER_NUMBER; i++)
+    {
+        if (id == db->users[i].id)
+        {
+            user->id = db->users[i].id;
+            strcpy(user->name, db->users[i].name);
+            strcpy(user->username, db->users[i].username);
+            strcpy(user->password, db->users[i].password);
+            user->profile_locked = db->users[i].profile_locked;
+
+            for (int j = 0; j < TOTAL_POST_NUMBER; j++)
+            {
+                user->posts_id[j] = db->users[i].posts_id[j];
+            }
+
+            for (int j = 0; j < TOTAL_FRIEND_NUMBER; j++)
+            {
+                user->friends_id[j] = db->users[i].friends_id[j];
+            }
+
+            for (int j = 0; j < TOTAL_NOTIFICATION_NUMBER; j++)
+            {
+                user->notifications_id[j] = db->users[i].notifications_id[j];
+            }
+
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 int create_an_user(Database *db, User *user, char name[], char username[], char password[])
 {
     strlwr(username); // Converts to lowercase
@@ -181,9 +215,9 @@ int create_an_user(Database *db, User *user, char name[], char username[], char 
 }
 
 /*
- * This function generates and returns a unique ID (UUID).
+ * This function generates and returns a unique ID (USER_ID).
  */
-unsigned long long int generate_unique_id()
+USER_ID generate_unique_id()
 {
     static int initialized = 0;
 
