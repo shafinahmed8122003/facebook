@@ -35,21 +35,12 @@ typedef struct
     USER_ID id;
     char content[100];
     time_t timestamp;
-    USER_ID author_id;
-} Comment;
-
-typedef struct
-{
-    USER_ID id;
-    char content[100];
-    time_t timestamp;
 } Notification;
 
 typedef struct
 {
     User users[TOTAL_USER_NUMBER];
     Post posts[TOTAL_POST_NUMBER];
-    Comment comments[TOTAL_COMMENT_NUMBER];
     Notification notifications[TOTAL_NOTIFICATION_NUMBER];
 } Database;
 

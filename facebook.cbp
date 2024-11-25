@@ -58,6 +58,9 @@
 		<Unit filename="screen-newsfeed.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="screen-settings.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="types.h" />
 		<Unit filename="constants.h" />
 		<Unit filename="utils.h" />

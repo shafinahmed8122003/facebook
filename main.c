@@ -72,6 +72,9 @@ screen_mainmenu:
     case 3:
         goto screen_search;
         break;
+    case 5:
+        goto screen_settings;
+        break;
     default:
         goto end;
     }
@@ -98,8 +101,25 @@ screen_newsfeed:
     int choice = ScreenNewsFeed(&db, &user);
     switch (choice)
     {
-        default:
-            goto screen_mainmenu;
+    default:
+        goto screen_mainmenu;
+    }
+}
+
+screen_settings:
+{
+    int choice = ScreenSettings(&db, &user);
+    switch (choice)
+    {
+    case 2:
+        delete_user(&db, &user);
+        printf("User deleted.\n");
+        getch();
+        goto screen_auth;
+    case 4:
+        goto screen_auth;
+    default:
+        goto screen_mainmenu;
     }
 }
 

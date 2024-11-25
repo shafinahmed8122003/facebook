@@ -5,22 +5,15 @@ void initialize_database(Database *db)
     for (int i = 0; i < TOTAL_USER_NUMBER; i++)
     {
         db->users[i].id = 0;
-        db->users[i].username[0] = '\0';
-        db->users[i].name[0] = '\0';
-        db->users[i].password[0] = '\0';
+        strcpy(db->users[i].username, "");
+        strcpy(db->users[i].name, "");
+        strcpy(db->users[i].password, "");
         db->users[i].profile_locked = 0;
-    }
-    for (int i = 0; i < TOTAL_COMMENT_NUMBER; i++)
-    {
-        db->comments[i].id = 0;
-        db->comments[i].content[0] = '\0';
-        db->comments[i].timestamp = 0;
-        db->comments[i].author_id = 0;
     }
     for (int i = 0; i < TOTAL_POST_NUMBER; i++)
     {
         db->posts[i].id = 0;
-        db->posts[i].content[0] = '\0';
+        strcpy(db->posts[i].content, "");
         db->posts[i].timestamp = 0;
         db->posts[i].author_id = 0;
         db->posts[i].likes = 0;
@@ -29,7 +22,7 @@ void initialize_database(Database *db)
     for (int i = 0; i < TOTAL_NOTIFICATION_NUMBER; i++)
     {
         db->notifications[i].id = 0;
-        db->notifications[i].content[0] = '\0';
+        strcpy(db->notifications[i].content, "");
         db->notifications[i].timestamp = 0;
     }
 }
@@ -175,7 +168,7 @@ int create_an_user(Database *db, User *user, char name[], char username[], char 
     {
         for (int i = 0; i < TOTAL_USER_NUMBER; i++)
         {
-            if (db->users[i].username[0] == '\0')
+            if (db->users[i].id == 0)
             {
                 db->users[i].id = generate_unique_id();
                 strcpy(db->users[i].name, name);
@@ -389,4 +382,90 @@ void create_post(Database *db, User *user, char post_content[])
 
     save_data(db);
     find_user_by_username(db, user, user->username);
+}
+
+void create_new_buffer()
+{
+    printf("\033[?1049h");
+}
+
+void kill_current_buffer()
+{
+    printf("\033[?1049l");
+}
+
+void update_user_data(Database *db, User *user)
+{
+    for (int i = 0; i < TOTAL_USER_NUMBER; i++)
+    {
+        if (db->users[i].id == user->id)
+        {
+            db->users[i].id = user->id;
+            strcpy(db->users[i].name, user->name);
+            strcpy(db->users[i].username, user->username);
+            strcpy(db->users[i].password, user->password);
+            db->users[i].profile_locked = user->profile_locked;
+
+            for (int j = 0; j < TOTAL_POST_NUMBER; j++)
+            {
+                db->users[i].posts_id[j] = user->posts_id[j];
+            }
+
+            for (int j = 0; j < TOTAL_FRIEND_NUMBER; j++)
+            {
+                db->users[i].friends_id[j] = user->friends_id[j];
+            }
+
+            for (int j = 0; j < TOTAL_NOTIFICATION_NUMBER; j++)
+            {
+                db->users[i].notifications_id[j] = user->notifications_id[j];
+            }
+        }
+    }
+}
+
+void delete_user(Database *db, User *user)
+{
+    USER_ID user_id = user->id;
+    for (int i = 0; i < TOTAL_USER_NUMBER; i++)
+    {
+        if (db->users[i].id == user_id)
+        {
+            db->users[i].id = 0;
+            strcpy(db->users[i].name, "");
+            strcpy(db->users[i].username, "");
+            strcpy(db->users[i].password, "");
+            db->users[i].profile_locked = 0;
+
+            for (int j = 0; j < TOTAL_POST_NUMBER; j++)
+            {
+                db->users[i].posts_id[j] = 0;
+            }
+
+            for (int j = 0; j < TOTAL_FRIEND_NUMBER; j++)
+            {
+                db->users[i].friends_id[j] = 0;
+            }
+
+            for (int j = 0; j < TOTAL_NOTIFICATION_NUMBER; j++)
+            {
+                db->users[i].notifications_id[j] = 0;
+            }
+            break;
+        }
+    }
+    for (int i = 0; i < TOTAL_POST_NUMBER; i++)
+    {
+        if (db->posts[i].author_id == user_id)
+        {
+            db->posts[i].id = 0;
+            strcpy(db->posts[i].content, "");
+            db->posts[i].timestamp = 0;
+            db->posts[i].author_id = 0;
+            db->posts[i].likes = 0;
+            db->posts[i].shares = 0;
+        }
+    }
+
+    save_data(db);
 }

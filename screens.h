@@ -11,5 +11,6 @@ int ScreenMainmenu(User *user);
 int ScreenSearch(Database *db, User *user);
 void ScreenCreatePost(Database *db, User *user);
 int ScreenNewsFeed(Database *db, User *user);
+int ScreenSettings(Database *db, User *user);
 
 #endif

@@ -5,9 +5,8 @@
 #define APP_NAME "Y2K Survivor"
 #define TOTAL_USER_NUMBER 50
 #define TOTAL_POST_NUMBER 100
-#define TOTAL_COMMENT_NUMBER 100
 #define TOTAL_NOTIFICATION_NUMBER 100
 #define TOTAL_FRIEND_NUMBER 100
-#define DATABASE_SIZE 247600 // Remember to change it if you change those upper numbers
+#define DATABASE_SIZE 234800 // Remember to change it if you change those upper numbers
 
 #endif

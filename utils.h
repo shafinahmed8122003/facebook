@@ -26,5 +26,9 @@ void show_title_in_box(char title[]);
 int find_user_by_username(Database *db, User *user, char username[]);
 time_t get_current_time();
 void create_post(Database *db, User *user, char post_content[]);
+void create_new_buffer();
+void kill_current_buffer();
+void update_user_data(Database *db, User *user);
+void delete_user(Database *db, User *user);
 
 #endif
