@@ -22,6 +22,7 @@ void initialize_database(Database *db)
     for (int i = 0; i < TOTAL_NOTIFICATION_NUMBER; i++)
     {
         db->notifications[i].id = 0;
+        db->notifications[i].author_id = 0;
         strcpy(db->notifications[i].content, "");
         db->notifications[i].timestamp = 0;
     }

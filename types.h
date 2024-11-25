@@ -5,8 +5,6 @@
 
 typedef unsigned long long int USER_ID;
 
-// db.users[0].name
-
 typedef struct
 {
     USER_ID id;
@@ -33,6 +31,7 @@ typedef struct
 typedef struct
 {
     USER_ID id;
+    USER_ID author_id;
     char content[100];
     time_t timestamp;
 } Notification;
