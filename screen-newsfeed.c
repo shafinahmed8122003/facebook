@@ -4,7 +4,6 @@ int ScreenNewsFeed(Database *db, User *user)
 {
     char options[][50] = {
         "Like",
-        "Share",
         "See Profile",
         "Previews Post",
         "Next Post",
@@ -52,7 +51,7 @@ show_post:
         printf("| -> %s\n", db->posts[current_post_index].content);
         printf("| \n");
         printf("+-\n");
-        printf("| Likes: %2d | Shares: 0\n", db->posts[current_post_index].likes);
+        printf("| Likes: %2d\n", db->posts[current_post_index].likes);
         printf("+-\n");
 
         printf("\n");
@@ -66,11 +65,11 @@ show_post:
         save_data(db);
         goto show_post;
     }
-    else if (current_option == 2 || current_option == 5)
+    else if (current_option == 1 || current_option == 4)
     {
         return current_option;
     }
-    else if (current_option == 4)
+    else if (current_option == 3)
     {
         if (current_post_index < post_length - 1)
         {
@@ -78,7 +77,7 @@ show_post:
         }
         goto show_post;
     }
-    else if (current_option == 3)
+    else if (current_option == 2)
     {
         if (current_post_index > 0)
         {
