@@ -8,6 +8,7 @@ int main()
 {
     Database db;
     User user;
+
     load_data(&db);
 
 screen_auth:
@@ -83,7 +84,7 @@ screen_mainmenu:
 
 screen_profile:
     {
-        int choice=ScreenProfile(user);
+        int choice = ScreenProfile(user);
         switch(choice)
         {
         case 0:
@@ -134,7 +135,7 @@ screen_profile:
             goto screen_profile;
             break;
 
-        default :
+        default:
             goto screen_mainmenu;
             break;
         }

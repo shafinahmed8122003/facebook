@@ -11,7 +11,7 @@ int ScreenSettings(Database *db, User *user)
         "Log Out",
     };
 
-    int option_count = sizeof(options) / sizeof(options[0]);
+    int option_count = 5;
 
     int current_option = 0;
 

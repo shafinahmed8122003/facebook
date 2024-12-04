@@ -10,7 +10,7 @@ int ScreenNewsFeed(Database *db, User *user)
         "Go Back",
     };
 
-    int option_count = sizeof(options) / sizeof(options[0]);
+    int option_count = 4;
 
     int current_post_index = 0;
     int current_option = 2;

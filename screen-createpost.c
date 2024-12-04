@@ -10,7 +10,7 @@ void ScreenCreatePost(Database *db, User *user)
         "Cancel",
     };
 
-    int option_count = sizeof(options) / sizeof(options[0]);
+    int option_count = 2;
 
     clear_screen();
     show_cursor();

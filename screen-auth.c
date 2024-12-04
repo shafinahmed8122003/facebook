@@ -9,7 +9,7 @@ int ScreenAuth()
         "Exit",
     };
 
-    int option_count = sizeof(options) / sizeof(options[0]);
+    int option_count = 3;
 
     char title[50] = "Welcome to ";
     strcat(title, APP_NAME);

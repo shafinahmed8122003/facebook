@@ -11,7 +11,7 @@ int ScreenMainmenu(User *user)
         "Settings",
     };
 
-    int option_count = sizeof(options) / sizeof(options[0]);
+    int option_count = 5;
 
     char title[50] = "Peace Be Upon You, ";
     strcat(title, user->name);

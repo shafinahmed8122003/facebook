@@ -10,15 +10,13 @@ int ScreenSearch(Database *db, User *user)
         "See Profile",
         "Go Back",
     };
-
-    int option_count1 = sizeof(options1) / sizeof(options1[0]);
+    int option_count1 = 3;
 
     char options2[][50] =
     {
         "Go Back",
     };
-
-    int option_count2 = sizeof(options2) / sizeof(options2[0]);
+    int option_count2 = 1;
 
     clear_screen();
     show_cursor();

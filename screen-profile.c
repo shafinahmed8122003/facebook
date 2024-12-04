@@ -25,6 +25,7 @@ int ScreenProfile(User user)
         printf("\n");
         finished=show_options(options,option_count,&current_option);
     }
+    
     return current_option;
 }
 
