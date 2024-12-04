@@ -2,18 +2,17 @@
 
 int ScreenMainmenu(User *user)
 {
-    char options[][50] = {
+    char options[][50] =
+    {
         "News Feed",
         "Create Post",
         "Profile",
         "Search",
-        "Notifications",
         "Settings",
     };
 
     int option_count = sizeof(options) / sizeof(options[0]);
 
-    
     char title[50] = "Peace Be Upon You, ";
     strcat(title, user->name);
 

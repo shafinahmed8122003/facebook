@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
@@ -31,40 +31,43 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="constants.h" />
 		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="utils.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="screen-auth.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="screen-login.c">
+		<Unit filename="screen-createpost.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="screen-signup.c">
+		<Unit filename="screen-login.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="screen-mainmenu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="screen-search.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="screen-createpost.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="screen-newsfeed.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen-profile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen-search.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="screen-settings.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="types.h" />
-		<Unit filename="constants.h" />
-		<Unit filename="utils.h" />
+		<Unit filename="screen-signup.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="screens.h" />
+		<Unit filename="types.h" />
+		<Unit filename="utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="utils.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

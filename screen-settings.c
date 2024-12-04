@@ -2,7 +2,8 @@
 
 int ScreenSettings(Database *db, User *user)
 {
-    char options[][50] = {
+    char options[][50] =
+    {
         "Change Name",
         "Lock/Unlock Profile",
         "Delete Account",
@@ -15,17 +16,17 @@ int ScreenSettings(Database *db, User *user)
     int current_option = 0;
 
 show_options:
-{
-    int finished = 0;
-    while (!finished)
     {
-        clear_screen();
-        hide_cursor();
+        int finished = 0;
+        while (!finished)
+        {
+            clear_screen();
+            hide_cursor();
 
-        show_title("Settings");
-        finished = show_options(options, option_count, &current_option);
+            show_title("Settings");
+            finished = show_options(options, option_count, &current_option);
+        }
     }
-}
 
     if (current_option == 0)
     {
@@ -56,7 +57,7 @@ show_options:
                 show_title("Profile locked: False");
                 printf("\nYour profile is currently public!\n");
                 printf("Press enter to lock your profile!\n");
-                
+
                 int keys = getch();
                 if (keys == 13)
                 {
@@ -65,11 +66,13 @@ show_options:
                     save_data(db);
                     break;
                 }
-            } else {
+            }
+            else
+            {
                 show_title("Profile locked: True");
                 printf("\nYour profile is currently locked!\n");
                 printf("Press enter to unlock your profile!\n");
-                
+
                 int keys = getch();
                 if (keys == 13)
                 {

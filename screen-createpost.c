@@ -4,7 +4,8 @@ void ScreenCreatePost(Database *db, User *user)
 {
     char post_content[100];
 
-    char options[][50] = {
+    char options[][50] =
+    {
         "Publish",
         "Cancel",
     };
@@ -23,7 +24,7 @@ void ScreenCreatePost(Database *db, User *user)
     while (!finished)
     {
         clear_screen();
-        hide_cursor();        
+        hide_cursor();
         show_title("Are you sure?");
 
         finished = show_options(options, option_count, &current_option);
@@ -34,7 +35,7 @@ void ScreenCreatePost(Database *db, User *user)
     {
         create_post(db, user, post_content);
         printf("Post created successfully!\n");
-    } 
+    }
     else
     {
         printf("Post creation canceled!\n");

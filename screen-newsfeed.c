@@ -2,9 +2,9 @@
 
 int ScreenNewsFeed(Database *db, User *user)
 {
-    char options[][50] = {
+    char options[][50] =
+    {
         "Like",
-        "See Profile",
         "Previews Post",
         "Next Post",
         "Go Back",
@@ -13,7 +13,7 @@ int ScreenNewsFeed(Database *db, User *user)
     int option_count = sizeof(options) / sizeof(options[0]);
 
     int current_post_index = 0;
-    int current_option = 4;
+    int current_option = 2;
 
     int post_length = 0;
     for (int i = 0; i < TOTAL_POST_NUMBER; i++)
@@ -25,65 +25,64 @@ int ScreenNewsFeed(Database *db, User *user)
     }
 
 show_post:
-{
-
-    char auther_username[50];
-
-    for (int i = 0; i < TOTAL_POST_NUMBER; i++)
     {
-        if (db->posts[current_post_index].author_id == db->users[i].id)
+        char auther_username[50];
+
+        for (int i = 0; i < TOTAL_POST_NUMBER; i++)
         {
-            strcpy(auther_username, db->users[i].username);
-            break;
+            if (db->posts[current_post_index].author_id == db->users[i].id)
+            {
+                strcpy(auther_username, db->users[i].username);
+                break;
+            }
+        }
+
+        int finished = 0;
+        while (!finished)
+        {
+            clear_screen();
+            hide_cursor();
+
+            printf("+-\n");
+            printf("| \033[1;7;93m @%s \033[0m\n", auther_username);
+            printf("+-\n");
+            printf("| \n");
+            printf("| -> %s\n", db->posts[current_post_index].content);
+            printf("| \n");
+            printf("+-\n");
+            printf("| Likes: %2d\n", db->posts[current_post_index].likes);
+            printf("+-\n");
+
+            printf("\n");
+
+            finished = show_options(options, option_count, &current_option);
+        }
+
+        if (current_option == 0)
+        {
+            db->posts[current_post_index].likes++;
+            save_data(db);
+            goto show_post;
+        }
+        else if (current_option == 1)
+        {
+            if (current_post_index > 0)
+            {
+                current_post_index--;
+            }
+            goto show_post;
+        }
+        else if (current_option == 2)
+        {
+            if (current_post_index < post_length - 1)
+            {
+                current_post_index++;
+            }
+            goto show_post;
+        }
+        else
+        {
+            return current_option;
         }
     }
-
-    int finished = 0;
-    while (!finished)
-    {
-        clear_screen();
-        hide_cursor();
-
-        printf("+-\n");
-        printf("| \033[1;7;93m @%s \033[0m\n", auther_username);
-        printf("+-\n");
-        printf("| \n");
-        printf("| -> %s\n", db->posts[current_post_index].content);
-        printf("| \n");
-        printf("+-\n");
-        printf("| Likes: %2d\n", db->posts[current_post_index].likes);
-        printf("+-\n");
-
-        printf("\n");
-
-        finished = show_options(options, option_count, &current_option);
-    }
-
-    if (current_option == 0)
-    {
-        db->posts[current_post_index].likes++;
-        save_data(db);
-        goto show_post;
-    }
-    else if (current_option == 1 || current_option == 4)
-    {
-        return current_option;
-    }
-    else if (current_option == 3)
-    {
-        if (current_post_index < post_length - 1)
-        {
-            current_post_index++;
-        }
-        goto show_post;
-    }
-    else if (current_option == 2)
-    {
-        if (current_post_index > 0)
-        {
-            current_post_index--;
-        }
-        goto show_post;
-    }
-}
 }

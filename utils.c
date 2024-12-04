@@ -42,10 +42,6 @@ void save_data(Database *db)
     fclose(file);
 }
 
-/*
- * This function tries to load data from the database.
- * If the file does not exist, it initializes the database and saves it.
- */
 void load_data(Database *db)
 {
     FILE *file = fopen(DATABASE_FILE, "rb");
@@ -77,10 +73,6 @@ void show_cursor()
     printf("\033[?25h");
 }
 
-/* This function looks for a user using the provided username and password.
- * If found, returns 1;
- * Otherwise, returns 0;
- */
 int find_user_using_username_password(Database *db, User *user, char username[], char password[])
 {
     strlwr(username); // Converts to lowercase
@@ -208,9 +200,6 @@ int create_an_user(Database *db, User *user, char name[], char username[], char 
     return 0;
 }
 
-/*
- * This function generates and returns a unique ID (USER_ID).
- */
 USER_ID generate_unique_id()
 {
     static int initialized = 0;
